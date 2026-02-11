@@ -1,11 +1,85 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #ffffff;
-  color: #333333;
+  background: var(--portfolio-bg);
+  color: var(--portfolio-text);
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  /* Portfolio design tokens */
+  --color-portfolio-bg: var(--portfolio-bg);
+  --color-portfolio-text: var(--portfolio-text);
+  --color-portfolio-heading: var(--portfolio-heading);
+  --color-portfolio-muted: var(--portfolio-muted);
+  --color-portfolio-faint: var(--portfolio-faint);
+  --color-portfolio-border: var(--portfolio-border);
+  --color-portfolio-accent: var(--portfolio-accent);
+  --color-portfolio-accent-bg: var(--portfolio-accent-bg);
+  --color-portfolio-accent-hover: var(--portfolio-accent-hover);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --border: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  /* Warm palette — cozy design system */
+  --portfolio-bg: #FFFFFF;
+  --portfolio-text: #4A4343;
+  --portfolio-heading: #3D3535;
+  --portfolio-muted: #9B8E8E;
+  --portfolio-faint: #C4B8B8;
+  --portfolio-border: #E8DEDE;
+  --portfolio-accent: #E8825A;
+  --portfolio-accent-bg: #FCEEE6;
+  --portfolio-accent-hover: #D4713E;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: var(--portfolio-text);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out both;
 }

@@ -48,7 +48,7 @@ export default function Lightbox({
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 text-3xl text-gray-400 hover:text-gray-700 transition-colors cursor-pointer"
+        className="absolute top-6 right-6 text-3xl text-portfolio-faint hover:text-portfolio-heading transition-colors cursor-pointer"
         aria-label="Close"
       >
         &times;
@@ -61,7 +61,7 @@ export default function Lightbox({
             e.stopPropagation();
             onNavigate(currentIdx - 1);
           }}
-          className="absolute left-6 top-1/2 -translate-y-1/2 text-4xl text-gray-300 hover:text-gray-600 transition-colors cursor-pointer"
+          className="absolute left-6 top-1/2 -translate-y-1/2 text-4xl text-portfolio-faint hover:text-portfolio-heading transition-colors cursor-pointer"
           aria-label="Previous"
         >
           &#8249;
@@ -75,7 +75,7 @@ export default function Lightbox({
             e.stopPropagation();
             onNavigate(currentIdx + 1);
           }}
-          className="absolute right-6 top-1/2 -translate-y-1/2 text-4xl text-gray-300 hover:text-gray-600 transition-colors cursor-pointer"
+          className="absolute right-6 top-1/2 -translate-y-1/2 text-4xl text-portfolio-faint hover:text-portfolio-heading transition-colors cursor-pointer"
           aria-label="Next"
         >
           &#8250;

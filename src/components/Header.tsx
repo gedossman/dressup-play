@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { SocialLinks } from "./SocialIcons";
@@ -10,48 +11,83 @@ export default function Header() {
   const pathname = usePathname();
 
   const navLinks = [
-    { href: "/about", label: "About" },
     { href: "/", label: "Portfolio" },
-    { href: "/contact", label: "Contact" },
+    { href: "/about", label: "About" },
+    { href: "mailto:hello@sofiaossman.com", label: "Contact", external: true },
   ];
 
   return (
-    <header className="w-full border-b border-gray-100">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-xl font-light tracking-wide text-gray-800 hover:text-black transition-colors"
-        >
-          Sofia Ossman
+    <header className="w-full">
+      {/* Desktop header — 3-column: nav left, logo center, icons right */}
+      <div className="hidden md:grid grid-cols-3 items-center max-w-6xl mx-auto px-6 py-5">
+        {/* Left — nav links */}
+        <nav className="flex items-center gap-6">
+          {navLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs uppercase tracking-widest text-portfolio-muted hover:text-portfolio-heading transition-colors"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-xs uppercase tracking-widest transition-colors ${
+                  pathname === link.href
+                    ? "text-portfolio-accent font-semibold"
+                    : "text-portfolio-muted hover:text-portfolio-heading"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
+        </nav>
+
+        {/* Center — logo */}
+        <Link href="/" className="justify-self-center hover:opacity-80 transition-opacity">
+          <Image
+            src="/images/sofia-portrait.png"
+            alt="Sofia Ossman"
+            width={2127}
+            height={224}
+            className="h-10 w-auto"
+            priority
+          />
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-colors ${
-                pathname === link.href
-                  ? "text-gray-900 font-medium"
-                  : "text-gray-500 hover:text-gray-800"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Right — social icons + Play Dress Up button */}
+        <div className="flex items-center justify-end gap-5">
+          <SocialLinks />
           <Link
             href="/dress-up-seasons"
-            className="px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-sm font-medium hover:bg-amber-100 transition-colors"
+            className="px-4 py-1.5 rounded-full bg-portfolio-accent-bg text-portfolio-accent text-xs font-semibold uppercase tracking-wide hover:bg-portfolio-accent-hover hover:text-white transition-colors"
           >
             Play Dress Up
           </Link>
-          <SocialLinks className="ml-2" />
-        </nav>
+        </div>
+      </div>
 
-        {/* Mobile menu button */}
+      {/* Mobile header */}
+      <div className="md:hidden flex items-center justify-between px-6 py-4">
+        <Link href="/" className="hover:opacity-80 transition-opacity">
+          <Image
+            src="/images/sofia-portrait.png"
+            alt="Sofia Ossman"
+            width={2127}
+            height={224}
+            className="h-7 w-auto"
+            priority
+          />
+        </Link>
+
         <button
-          className="md:hidden p-2 text-gray-600 hover:text-gray-800"
+          className="p-2 text-portfolio-muted hover:text-portfolio-heading"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -69,24 +105,37 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-100 px-6 py-4 space-y-3">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`block text-sm ${
-                pathname === link.href
-                  ? "text-gray-900 font-medium"
-                  : "text-gray-500"
-              }`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="md:hidden border-t border-portfolio-border px-6 py-4 space-y-3">
+          {navLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-portfolio-muted"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block text-sm ${
+                  pathname === link.href
+                    ? "text-portfolio-accent font-medium"
+                    : "text-portfolio-muted"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <Link
             href="/dress-up-seasons"
-            className="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-sm font-medium"
+            className="inline-block px-3 py-1 rounded-full bg-portfolio-accent-bg text-portfolio-accent text-sm font-medium"
             onClick={() => setMobileMenuOpen(false)}
           >
             Play Dress Up

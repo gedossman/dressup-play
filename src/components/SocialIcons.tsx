@@ -1,7 +1,7 @@
 export function BehanceIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M7.5 11c1.38 0 2.5-1.12 2.5-2.5S8.88 6 7.5 6H3v5h4.5zm0-3.5c.55 0 1 .45 1 1s-.45 1-1 1H4.5V7.5H7.5zM7.5 12H3v5h4.5c1.38 0 2.5-1.12 2.5-2.5S8.88 12 7.5 12zm0 3.5H4.5V13.5H7.5c.55 0 1 .45 1 1s-.45 1-1 1zM16.5 10c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5c1.77 0 3.3-1.02 4.04-2.5h-1.8c-.5.63-1.3 1-2.24 1-1.38 0-2.5-1.12-2.5-2.5h6.75c.08-.33.25-.65.25-1 0-2.49-2.01-4.5-4.5-4.5zm-2.5 3.5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5h-5zM15 6h5v1.5h-5V6z" />
+      <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
     </svg>
   );
 }
@@ -37,7 +37,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
         href="https://www.behance.net/sofiaossman"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-500 hover:text-gray-800 transition-colors"
+        className="text-portfolio-muted hover:text-portfolio-accent transition-colors"
         title="Behance"
       >
         <BehanceIcon />
@@ -46,7 +46,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
         href="https://www.linkedin.com/in/sofiaossman"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-500 hover:text-gray-800 transition-colors"
+        className="text-portfolio-muted hover:text-portfolio-accent transition-colors"
         title="LinkedIn"
       >
         <LinkedInIcon />
@@ -55,14 +55,14 @@ export function SocialLinks({ className = "" }: { className?: string }) {
         href="https://www.instagram.com/sofiaossman.illustration"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-500 hover:text-gray-800 transition-colors"
+        className="text-portfolio-muted hover:text-portfolio-accent transition-colors"
         title="Instagram"
       >
         <InstagramIcon />
       </a>
       <a
         href="mailto:hello@sofiaossman.com"
-        className="text-gray-500 hover:text-gray-800 transition-colors"
+        className="text-portfolio-muted hover:text-portfolio-accent transition-colors"
         title="Email"
       >
         <EmailIcon />
