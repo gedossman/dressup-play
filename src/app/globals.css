@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #FDF6EC;
+  --warm-brown: #6B4226;
+  --burnt-orange: #C7522A;
+  --golden: #E8A838;
+  --forest-green: #4A7C59;
+  --plum: #7B4F7B;
+  --dusty-rose: #D4788C;
+  --warm-pink: #F0C4D1;
+}
+
+@theme inline {
+  --color-background: var(--cream);
+  --color-foreground: var(--warm-brown);
+}
+
+body {
+  background: var(--cream);
+  color: var(--warm-brown);
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Tin box effect */
+.tin-box {
+  background: linear-gradient(135deg, #2D5F4A 0%, #1B4332 50%, #2D5F4A 100%);
+  border: 4px solid #B8860B;
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 8px 24px rgba(0,0,0,0.3),
+    0 2px 4px rgba(0,0,0,0.2);
+  padding: 6px;
+}
+
+.tin-inner {
+  background: #FDF6EC;
+  border-radius: 12px;
+  border: 2px solid #DAA520;
+  overflow: hidden;
+}
+
+/* Clothing item card */
+.clothing-card {
+  border: 3px solid transparent;
+  border-radius: 12px;
+  background: #FFF8EE;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.clothing-card:hover {
+  border-color: #E8A838;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(232, 168, 56, 0.3);
+}
+
+.clothing-card.equipped {
+  border-color: #C7522A;
+  background: #FFF0E0;
+  box-shadow: 0 0 0 2px #C7522A, 0 4px 12px rgba(199, 82, 42, 0.3);
+}
+
+/* Character selector button */
+.char-btn {
+  border: 3px solid #DAA520;
+  border-radius: 14px;
+  background: #FFF8EE;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.char-btn:hover {
+  transform: scale(1.08);
+  border-color: #E8A838;
+}
+
+.char-btn.active {
+  border-color: #C7522A;
+  background: #FFF0E0;
+  box-shadow: 0 0 0 2px #C7522A, 0 4px 12px rgba(199, 82, 42, 0.2);
+}
+
+/* Category tab */
+.cat-tab {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  background: #FFF8EE;
+  color: #6B4226;
+}
+
+.cat-tab:hover {
+  background: #FFF0E0;
+}
+
+.cat-tab.active {
+  background: #C7522A;
+  color: white;
+  border-color: #A04020;
+}
+
+/* Scene background */
+.scene-bg {
+  background: linear-gradient(180deg, #F0C4D1 0%, #F5D6C3 40%, #E8C9A0 100%);
+}
+
+/* Clear button */
+.clear-btn {
+  background: #FFF8EE;
+  border: 2px solid #DAA520;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B4226;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #C7522A;
+  color: white;
+  border-color: #A04020;
+}
+
+/* Scrollbar styling */
+.wardrobe-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wardrobe-scroll::-webkit-scrollbar-track {
+  background: #FDF6EC;
+  border-radius: 3px;
+}
+
+.wardrobe-scroll::-webkit-scrollbar-thumb {
+  background: #DAA520;
+  border-radius: 3px;
+}
+
+/* Bounce animation for equipped items */
+@keyframes equip-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.equip-anim {
+  animation: equip-bounce 0.3s ease;
+}
+
+/* Floating music notes */
+@keyframes float-note {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-8px) rotate(10deg); opacity: 0.7; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
