@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Woodland Dress Up - Digital Paper Dolls",
-  description: "A charming digital dress-up game with woodland animal characters. Mix and match hats, tops, bottoms, and boots!",
+  title: {
+    template: "%s | Sofia Ossman",
+    default: "Sofia Ossman - Illustrator",
+  },
+  description:
+    "Award-winning illustrator based in San Francisco, creating vibrant illustrations for young children.",
 };
 
 export default function RootLayout({

@@ -209,6 +209,7 @@ export default function MusicPlayer() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const stoppedRef = useRef(false);
   const trackRef = useRef(0);
+  const scheduleLoopRef = useRef<() => void>(null);
 
   const scheduleLoop = useCallback(() => {
     const ctx = ctxRef.current;
@@ -222,9 +223,13 @@ export default function MusicPlayer() {
 
     const loopDuration = end - startTime;
     timerRef.current = setTimeout(() => {
-      if (!stoppedRef.current) scheduleLoop();
+      if (!stoppedRef.current) scheduleLoopRef.current?.();
     }, (loopDuration - 0.5) * 1000);
   }, []);
+
+  useEffect(() => {
+    scheduleLoopRef.current = scheduleLoop;
+  }, [scheduleLoop]);
 
   const stopAudio = useCallback(() => {
     stoppedRef.current = true;
